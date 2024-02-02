@@ -16,13 +16,23 @@ import LightMode from "./icons/LightMode.astro";
 </header>
 
 <script is:inline>
-    if (window.localStorage.getItem('DARKMODE') === 'true') {
-		document.querySelector('#darkModeButton > .darkModeIcon').classList.remove('hidden');
-		document.querySelector('#darkModeButton > .lightModeIcon').classList.add('hidden');
-	} else {
-		document.querySelector('#darkModeButton > .darkModeIcon').classList.add('hidden');
-		document.querySelector('#darkModeButton > .lightModeIcon').classList.remove('hidden');
-	}
+    if (window.localStorage.getItem('DARKMODE') === undefined || window.localStorage.getItem('DARKMODE') === null) {
+        if (window.localStorage.getItem('DARKMODE') === 'true') {
+            document.querySelector('#darkModeButton > .darkModeIcon').classList.add('hidden');
+            document.querySelector('#darkModeButton > .lightModeIcon').classList.remove('hidden');
+        } else {
+            document.querySelector('#darkModeButton > .darkModeIcon').classList.remove('hidden');
+            document.querySelector('#darkModeButton > .lightModeIcon').classList.add('hidden');
+        }
+    } else {
+        if (window.localStorage.getItem('DARKMODE') === 'true') {
+            document.querySelector('#darkModeButton > .darkModeIcon').classList.remove('hidden');
+            document.querySelector('#darkModeButton > .lightModeIcon').classList.add('hidden');
+        } else {
+            document.querySelector('#darkModeButton > .darkModeIcon').classList.add('hidden');
+            document.querySelector('#darkModeButton > .lightModeIcon').classList.remove('hidden');
+        }
+    }
 
     function changeMode(){
         if (window.localStorage.getItem('DARKMODE') === 'true') {
