@@ -1,0 +1,83 @@
+---
+import CSSIcon from './icons/Css.astro';
+import HTMLIcon from './icons/Html.astro';
+import JSIcon from './icons/Js.astro';
+
+const TAGS = {
+    HTML: {
+        name: 'HTML',
+        class: 'bg-yellow-600 text-white',
+        icon: HTMLIcon
+    },
+    CSS: {
+        name: 'CSS',
+        class: 'bg-blue-400 text-white',
+        icon: CSSIcon
+    },
+    JS: {
+        name: 'JavaScript',
+        class: 'bg-amber-400 text-white',
+        icon: JSIcon
+    }
+}
+
+const PROJECTS = [
+    {
+        title: "Himnario Cristiano",
+        description: "Himnario cristiano para ser proyectado en una iglesia.",
+        link: "enlace",
+        github: "enlace",
+        imageLight: "../public/images/project_hymnal/himnario_imagen_light.png",
+        imageDark: "../public/images/project_hymnal/himnario_imagen_dark.png",
+        tags: [TAGS.HTML, TAGS.CSS, TAGS.JS],
+    },
+    {
+        title: "Biblia",
+        description: "Biblia cristiana para ser proyectada en una iglesia.",
+        link: "enlace",
+        github: "enlace",
+        imageLight: "../public/images/project_bible/biblia_imagen_light.png",
+        imageDark: "../public/images/project_bible/biblia_imagen_dark.png",
+        tags: [TAGS.HTML, TAGS.CSS, TAGS.JS],
+    },
+];
+---
+
+{
+    PROJECTS.map((project) => (
+        <article class="mb-8">
+            <h3 class="text-xl font-semibold text-blue-600 dark:text-yellow-200 mb-2">{project.title}</h3>
+            <p class="text-lg mb-4 text-pretty text-slate-900 dark:text-slate-100">{project.description}</p>
+            <ul class="flex gap-x-2 flex-row">
+                {project.tags.map((tag) => (
+                    <li>
+                        <span class={`flex gap-x-1 rounded-full text-xs py-0.5 px-2.5 items-center justify-center font-bold ${tag.class}`}>
+                            <tag.icon />
+                            {tag.name}
+                        </span>
+                    </li>
+                ))}
+            </ul>
+            <img
+                class="imageLight rounded-lg shadow-2xl shadow-black/20 dark:shadow-white/10 mt-2"
+                src={project.imageLight}
+                alt={`Captura de pantalla el proyecto ${project.title}`}
+            />
+            <img
+                class="imageDark rounded-lg shadow-2xl shadow-black/20 dark:shadow-white/10 mt-2"
+                src={project.imageDark}
+                alt={`Captura de pantalla el proyecto ${project.title}`}
+            />
+        </article>
+    ))
+}
+
+<script is:inline>
+    if (window.localStorage.getItem('DARKMODE') === 'true') {
+        [...document.querySelectorAll('.imageDark')].map(img => img.classList.remove('hidden'));
+        [...document.querySelectorAll('.imageLight')].map(img => img.classList.add('hidden'));
+	} else {
+        [...document.querySelectorAll('.imageDark')].map(img => img.classList.add('hidden'));
+        [...document.querySelectorAll('.imageLight')].map(img => img.classList.remove('hidden'));
+	}
+</script>

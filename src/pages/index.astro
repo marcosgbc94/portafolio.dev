@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Badge from '../components/Badge.astro';
+import SocialPill from '../components/SocialPill.astro';
+import LinkedInIcon from '../components/icons/LinkedIn.astro';
+import GitHubIcon from '../components/icons/GitHub.astro';
+import GmailIcon from '../components/icons/Gmail.astro';
+import Experience from '../components/Experience.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Briefcase from '../components/icons/Briefcase.astro';
+import ProjectsIcon from '../components/icons/Projects.astro';
+import Projects from '../components/Projects.astro';
+---
+
+<Layout title="Portafolio Marcos Bustos - Desarrollador y programador web">
+	<main class="px-4">
+		<SectionContainer class="py-40 pb-20">
+			<img src="../../public/images/avatar.jpeg" class="rounded-full w-12 h-12 text-center mx-auto sm:mx-0" alt="Marcos Bustos foto" />
+			<h1 class="text-slate-900 dark:text-slate-100 font-bold text-2xl md:text-3xl xl:text-4xl flex-col flex justify-start pb-4 sm:flex-row gap-x-4 items-center mt-4">
+				Hola, soy Marcos Bustos
+				<a href="https://www.linkedin.com/in/marcos-bustos-castillo-9198b09b/" target="_blank" rel="noopener" class="flex justify-center items-center mt-1 sm:mt-0">
+					<Badge>Disponible para trabajar</Badge>
+				</a>
+			</h1>
+			<h2 class="text-l md:text-xl xl:text-2xl text-wrap opacity-80 text-slate-900 dark:text-slate-100 text-center sm:text-left">
+				<span class="text-blue-600 dark:text-yellow-200">Ingeniero de ejecución en informática</span> con más de 3 años de experiencia como desarrollador Web en La Serena, Chile.
+			</h2>
+			<nav class="sm:flex gap-x-2 mt-5 block">
+				<SocialPill href="https://www.linkedin.com/in/marcos-bustos-castillo-9198b09b/">
+					<LinkedInIcon class="md:size-6 size-4" />
+					LinkedIn
+				</SocialPill>
+				<SocialPill href="https://github.com/marcosgbc94">
+					<GitHubIcon class="md:size-6 size-4" />
+					GitHub
+				</SocialPill>
+				<SocialPill href="mailto:marcosgbc94@gmail.com">
+					<GmailIcon class="md:size-6 size-4" />
+					marcosgbc94@gmail.com
+				</SocialPill>
+			</nav>
+		</SectionContainer>
+
+		<SectionContainer id="experience" class="py-10">
+			<h2 class="text-2xl font-semibold mb-6 flex gap-x-2 items-center text-slate-900 dark:text-slate-100">
+				<Briefcase class="size-8" />
+				Experiencia Laboral
+			</h2>
+			<Experience />
+		</SectionContainer>
+
+		<SectionContainer id="projects" class="py-10">
+			<h2 class="text-2xl font-semibold mb-6 flex gap-x-2 items-center text-slate-900 dark:text-slate-100">
+				<ProjectsIcon class="size-8" />
+				Proyectos
+			</h2>
+			<Projects />
+		</SectionContainer>
+	</main>
+</Layout>

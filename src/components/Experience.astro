@@ -1,0 +1,30 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+
+const EXPERIENCE = [
+    {
+        date: 'sept. 2020 - actualidad',
+        company: 'Universidad de La Serena',
+        title: 'Desarrollador Web',
+        description: 'Profesional de Apoyo en Centro de Informática y computación de la Universidad de La Serena. Creación de consultas de bases de datos en Oracle. Generar propuestas para implementación de módulos para plataforma interna. Realización de respaldos de plataformas en cintas magnéticas por medio de Linux. Desarrollo de nuevos módulos para plataforma institucional, uso de PHP, JS, Ajax y Bootstrap 4 y 5. Generar propuestas de diseño de interfaz de usuario. Desarrollo de mejoras para la plataforma institucional con framework VUE.js, CSS y Bootstrap 5 en equipo de trabajo',
+        link: null
+    },
+    {
+        date: 'ene. 2019 - may. 2019',
+        company: 'Iglesia Cristiana Ven Jesús Te Ama',
+        title: 'Desarrollador Web',
+        description: 'Se construyó tres aplicaciones web para una iglesia local en la Serena, dos para ser visualizadas en un proyector de forma offline y la otra de manera online. Himnario Offline: Desarrollo de un sistema visualizador de canciones. Biblia Offline: Construcción de un sistema informático para mostrar el libro de la Biblia. Himnario Online: Desarrollo de una aplicación Web para mostrar las canciones del himnario offline.',
+        link: null
+    }
+];
+---
+
+<ol class="relative border-s border-gray-200 dark:border-gray-700 ml-3">                  
+    {
+        EXPERIENCE.map(exp => (
+            <li class="mb-10 ms-4">
+                <ExperienceItem {...exp} />
+            </li>
+        ))
+    }
+</ol>

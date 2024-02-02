@@ -1,0 +1,48 @@
+---
+import DarkMode from "./icons/DarkMode.astro";
+import LightMode from "./icons/LightMode.astro";
+---
+
+<header class="flex justify-center items-center py-3 xl:w-[1120px] mx-auto">
+    <nav class="flex flex-row gap-x-10 opacity-80">
+        <a href="/" class="text-slate-900 dark:text-slate-100 hover:text-blue-400 dark:hover:text-yellow-400 transition">Inicio</a>
+        <a href="#experience" class="text-slate-900 dark:text-slate-100 hover:text-blue-400 dark:hover:text-yellow-400 transition">Experiencia</a>
+        <a href="#projects" class="text-slate-900 dark:text-slate-100 hover:text-blue-400 dark:hover:text-yellow-400 transition">Proyectos</a>
+        <button type="button" id="darkModeButton">
+            <DarkMode class="size-6 darkModeIcon text-white" />
+            <LightMode class="size-6 lightModeIcon text-black" />
+        </button>
+    </nav>
+</header>
+
+<script is:inline>
+    if (window.localStorage.getItem('DARKMODE') === 'true') {
+		document.querySelector('#darkModeButton > .darkModeIcon').classList.remove('hidden');
+		document.querySelector('#darkModeButton > .lightModeIcon').classList.add('hidden');
+	} else {
+		document.querySelector('#darkModeButton > .darkModeIcon').classList.add('hidden');
+		document.querySelector('#darkModeButton > .lightModeIcon').classList.remove('hidden');
+	}
+
+    function changeMode(){
+        if (window.localStorage.getItem('DARKMODE') === 'true') {
+            window.localStorage.setItem('DARKMODE', 'false');
+            document.querySelector('html').classList.remove('dark');
+            document.querySelector('#darkModeButton > .darkModeIcon').classList.add('hidden');
+            document.querySelector('#darkModeButton > .lightModeIcon').classList.remove('hidden');
+            [...document.querySelectorAll('.imageDark')].map(img => img.classList.add('hidden'));
+            [...document.querySelectorAll('.imageLight')].map(img => img.classList.remove('hidden'));
+        } else {
+            window.localStorage.setItem('DARKMODE', 'true');
+            document.querySelector('html').classList.add('dark');
+            document.querySelector('#darkModeButton > .darkModeIcon').classList.remove('hidden');
+            document.querySelector('#darkModeButton > .lightModeIcon').classList.add('hidden');
+            [...document.querySelectorAll('.imageDark')].map(img => img.classList.remove('hidden'));
+            [...document.querySelectorAll('.imageLight')].map(img => img.classList.add('hidden'));
+        }
+    }
+
+    document.querySelector('#darkModeButton').addEventListener('click', () => {
+        changeMode();
+    });
+</script>
